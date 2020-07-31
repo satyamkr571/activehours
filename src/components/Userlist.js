@@ -11,6 +11,7 @@ export default class UserList extends Component {
       endTime: [],
       activities: [],
       modalShow: false,
+      userIndex: 0,
     };
   }
   componentDidMount() {
@@ -51,7 +52,7 @@ export default class UserList extends Component {
   }
 
   userList() {
-    return this.state.data.map((data) => (
+    return this.state.data.map((data, index) => (
       <tr>
         <td> {data.id}</td>
         <td>
@@ -59,7 +60,7 @@ export default class UserList extends Component {
             href="/"
             onClick={(e) => {
               e.preventDefault();
-              this.setState({ modalShow: true });
+              this.setState({ modalShow: true, userIndex: index });
             }}
           >
             {data.real_name}
@@ -90,6 +91,7 @@ export default class UserList extends Component {
           onHide={() => this.setState({ modalShow: false })}
           startTime={this.userListStartTime()}
           endTime={this.userListEndTime()}
+          index={this.state.userIndex}
         />
       </div>
     );

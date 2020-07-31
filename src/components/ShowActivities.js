@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button, Row, Col } from "react-bootstrap";
+import { Modal, Button, Col } from "react-bootstrap";
 
 export default class ShowActivities extends Component {
   constructor(props) {
@@ -28,10 +28,20 @@ export default class ShowActivities extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Row>
-              <Col>{this.props.showStartTime}</Col>
-              <Col>{this.props.endTime[0]}</Col>
-            </Row>
+            <table className="table">
+              <thead className="thead-light">
+                <tr>
+                  <th>Login</th>
+                  <th>Logout</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{this.props.startTime[this.props.index]}</td>
+                  <td>{this.props.endTime[this.props.index]}</td>
+                </tr>
+              </tbody>
+            </table>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.props.onHide}>Close</Button>
